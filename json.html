@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </style>
+    
+    <script type="text/javascript"> 
+    $(function() {
+        $("button").click(function(){
+        $.getJSON("guitars.json", function(data){
+           console.log(data.Guitars.Guitar);
+           var list = data.Guitars.Guitar;
+           $(list).each(function(index) {
+               let tr = document.createElement("tr");
+               let td = document.createElement("td");
+               td.append(list[index]['Brand']);
+               tr.append(td);
+               let td2 = document.createElement("td2");
+               td2.append(list[index]['Model']);
+               tr.append(td2);
+               $("#tab").append(tr);
+             });
+        });
+        });
+    });
+    </script>
+    </head>
+    <body>
+        <button>Text A</button>
+        <table id="tab">
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+            </tr>
+        </table>
+        <div id="content"></div>
+    </body>
+</html>
