@@ -1,7 +1,7 @@
 # Advanced Internet Applications – laboratory - jQuery
 
 Description : The aim of this labotory was to learn some functionalities of jQuery, such as using various selectors, using json data, using promise..., by doing some exercices.  
-Important : In every code, there are comments which describe the functionalities.  
+Important : In each code, there are comments which describe the functionalities.  
 
 ## Selectors
 
