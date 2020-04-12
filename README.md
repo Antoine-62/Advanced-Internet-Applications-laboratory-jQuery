@@ -1,6 +1,6 @@
 # Advanced Internet Applications – laboratory - jQuery
 
-Description : The aim of the exercice was to learn some functionalities of jQuery, such as using various selector, using json data, using promise..., by doing some exercices.  
+Description : The aim of this labotory was to learn some functionalities of jQuery, such as using various selector, using json data, using promise..., by doing some exercices.  
 Important : In every code, there are comments which describe the functionalities.  
 
 ## Selectors
@@ -9,6 +9,12 @@ The code related to this part is contained in Selector.html
 
 ### Question 3
 
+```
+ $('div').css('color', 'green');
+ $('.c').css('font-size', 'x-large');
+ $('tr + tr').css('color', 'aqua');
+```
+
 * The first line will change all div elements in green
 * The second line will set the size as X-large for each element with class ".c"
 * The last line will set color as aqua for each table row other than the first row
@@ -16,11 +22,23 @@ The code related to this part is contained in Selector.html
 
 ### Question 4
 
+```
+$('table tr:first').css('color', 'yellow');
+$('tr:last').css('color', 'yellow');
+$('p:even').css('color', 'orange');
+```
+
 * The first line will select the first row of the table, to set its color as yellow
 * The second line will select the last row of the table, to set its color as yellow
 * The last line will select each row with an even index number
 
 ### Question 5
+
+```
+$('[href]').css('border', '1px solid black').css('padding', '3px');
+$('a[href*=kalaka]').css('border', '1px solid pink');
+$('a[href$=\'.pdf\']').css('border', '1px solid red');
+```
 
 * The first line selects every links
 * The second line selects every links which contains "kalaka"
@@ -32,9 +50,27 @@ The code related to this part is contained in Style.html
 
 ### Question 6
 
+```
+alert('The color of an element withid="a" is'+ $('#a').css('color'));
+```
+
 We get the color of every elements from class ".a".
 
 ### Question 7
+
+```
+$('button:contains(\'A\')').click(function() { //We add 'asdf' class to #classic when we click on a button which contain "A" 
+                    $('#classic').addClass('asdf');
+                });
+                
+$('button:contains(\'B\')').click(function() { //We remove 'asdf' class to #classic when we click on a button which contain "B" 
+                    $('#classic').removeClass('asdf');
+                });
+                
+$('button:contains(\'C\')').click(function() {//Do the 2 functionalities before
+                    $('#toggle').toggleClass('asdf');
+                });
+```
 
 * The addClass method will add a class to selected element
 * The removeClasss method will remove a class to selected element
@@ -42,12 +78,28 @@ We get the color of every elements from class ".a".
 
 ### Question 8
 
+```
+$('tr:even').addClass('asdf');// set asdf class to every 2 row table
+```
+
 It will add the class "asdf" to every table row with an even index number
 
 ### Question 9
 
-See code 
+Our list with "a" class in our html file
+```
+<ol class ="a" type="1">
+       <li>Coffee</li>
+       <li class ="b">Tea</li>
+       <li>Milk</li>
+</ol> 
+```
+Our script, which will add "asf" class for each element of the list with "a" class, other than element from "b" class.
 
+```
+$('.a li').addClass('asdf');
+$('.b').removeClass('asdf');
+```
 ## Events
 
 The code related to this part is contained in Events.html
@@ -163,10 +215,67 @@ If we remove the *false*, the function will become obsolete, and then our link b
 The code related to this part is contained in json.html
 ### Question 15
 
+Our function to load  the data from a json file, and then display it in a form of a list
+```
+ $("button").click(function(){//when we click on the button
+        $.getJSON("guitars.json", function(data){//we retrieve json data from url, and then we store them in the variable "data"
+           console.log(data.Guitars.Guitar);//Display in the console the data contained in guitar->a test to see how we can accsess to objects contained in json data
+           var list = data.Guitars.Guitar;
+           $(list).each(function(index) {//For each elements in the object guitar
+               let tr = document.createElement("tr");//we create a tr element
+               let td = document.createElement("td");//we create a td element
+               td.append(list[index]['Brand']);//we add the element 'brand' of our guitar to our td 
+               tr.append(td);//we add td to our row
+               let td2 = document.createElement("td2");//We create a second td element for the model
+               td2.append(list[index]['Model']);//We add the element 'Model' of our guitar to our td
+               tr.append(td2);//we add the second td to our row
+               $("#tab").append(tr);//finally, we add the row to our table
+             });
+        });
+        });
+```
+Everything is explained in the code comments.  
+
 ## Promises
 
 The code related to this part is contained in Promise.html
 
 ### Question 16
 
+Our function which for a given url address parameter, will return a promise which makes an HTTP call to the given address.
+```
+function get(url) {
+      // Return a new promise.
+      return new Promise(function(resolve, reject) {
+       // Do the usual XHR stuff
+       var req = new XMLHttpRequest();
+       req.open('GET', url);
+
+     req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {//if our statut is 200
+        // then resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));//we say the errors come from network
+    };
+
+    // Make the request
+    req.send();
+     });
+    }
+```
+Everything is explained in the code comments. I don't have additionals explanations here.
 ## Conclusion
+In this exercice, I improved my skills with jQuery, and I understood a lot better the promises (before I used it without really know what is it, like a black box). I didn't met serious problems.  
+I thank my teacher, sir Piernik, for this exercice and new skills acquired.
