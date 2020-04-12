@@ -7,19 +7,19 @@
     
     <script type="text/javascript"> 
     $(function() {
-        $("button").click(function(){
-        $.getJSON("guitars.json", function(data){
-           console.log(data.Guitars.Guitar);
+        $("button").click(function(){//when we click on the button
+        $.getJSON("guitars.json", function(data){//we retrieve json data from url, and then we store them in the variable "data"
+           console.log(data.Guitars.Guitar);//Display in the console the data contained in guitar->a test to see how we can accsess to objects contained in json data
            var list = data.Guitars.Guitar;
-           $(list).each(function(index) {
-               let tr = document.createElement("tr");
-               let td = document.createElement("td");
-               td.append(list[index]['Brand']);
-               tr.append(td);
-               let td2 = document.createElement("td2");
-               td2.append(list[index]['Model']);
-               tr.append(td2);
-               $("#tab").append(tr);
+           $(list).each(function(index) {//For each elements in the object guitar
+               let tr = document.createElement("tr");//we create a tr element
+               let td = document.createElement("td");//we create a td element
+               td.append(list[index]['Brand']);//we add the element 'brand' of our guitar to our td 
+               tr.append(td);//we add td to our row
+               let td2 = document.createElement("td2");//We create a second td element for the model
+               td2.append(list[index]['Model']);//We add the element 'Model' of our guitar to our td
+               tr.append(td2);//we add the second td to our row
+               $("#tab").append(tr);//finally, we add the row to our table
              });
         });
         });

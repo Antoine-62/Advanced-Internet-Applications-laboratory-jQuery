@@ -7,29 +7,28 @@
         <script type="text/javascript">
              $(function() {
                 $('td').one('click', edit);
-                $('button').bind('asdf', function() { alert('The cake is a lie!'); });
-                $('*').unbind();
+                $('button').bind('asdf', function() { alert('The cake is a lie!'); });//we store an event in our button
+                $('*').unbind();//disable all events
 
                 function edit()
                 {
-                    var Edit = document.createElement("input");
-                    Edit.setAttribute("type", "text");
-                    Edit.setAttribute("id","edit");
-                    var br = $(this).text();
-                    this.innerHTML="";
-                    Edit.setAttribute("value",br);
-                    $(this).append(Edit);
-                    let test = $(this);
-                    $('button').trigger('asdf');
-                    $("#edit").focus(function(){
-                        $("span").css("display", "inline").fadeOut(2000);
-                    }); 
+                    var Edit = document.createElement("input");//create an input
+                    Edit.setAttribute("type", "text");//set attribute text to input
+                    Edit.setAttribute("id","edit");//Set "edit" as id
+                    var br = $(this).text();//Retrieve the current of the row
+                    this.innerHTML="";//remove the text
+                    Edit.setAttribute("value",br);//We set the retrieved text in our input
+                    $(this).append(Edit);//We add the input to the row
+                    let test = $(this);//we store the current element selected in a variable
+                  
+                    $("#edit").focus();// we set focus on our created input
+                    $('button').trigger('asdf');//trigger the alarm stored in button
 
-                    $("#edit").blur(function(){
-                        var name= $("#edit").val();
-                        $("#edit").remove();
-                        test.append(name);
-                        test.one('click', edit);
+                    $("#edit").blur(function(){//When our input element loses its focus
+                        var name= $("#edit").val();//we retrieve the value in the element
+                        $("#edit").remove();//we remove our input
+                        test.append(name);//we add the value as text - we use test and no this because we click on another element
+                        test.one('click', edit);//we assign the edit function to the click event for  one-time execution.
                        
 
                     });
