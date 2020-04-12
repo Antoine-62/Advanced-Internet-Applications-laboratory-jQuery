@@ -1,11 +1,11 @@
 # Advanced Internet Applications – laboratory - jQuery
 
-Description : The aim of this labotory was to learn some functionalities of jQuery, such as using various selector, using json data, using promise..., by doing some exercices.  
+Description : The aim of this labotory was to learn some functionalities of jQuery, such as using various selectors, using json data, using promise..., by doing some exercices.  
 Important : In every code, there are comments which describe the functionalities.  
 
 ## Selectors
 
-The code related to this part is contained in Selector.html
+The code related to this part is contained in Selectors.html
 
 ### Question 3
 
@@ -16,8 +16,8 @@ The code related to this part is contained in Selector.html
 ```
 
 * The first line will change all div elements in green
-* The second line will set the size as X-large for each element with class ".c"
-* The last line will set color as aqua for each table row other than the first row
+* The second line will set the font size to X-large for each element with class ".c"
+* The last line will set color to aqua for each table row other than the first row
 
 
 ### Question 4
@@ -28,9 +28,9 @@ $('tr:last').css('color', 'yellow');
 $('p:even').css('color', 'orange');
 ```
 
-* The first line will select the first row of the table, to set its color as yellow
-* The second line will select the last row of the table, to set its color as yellow
-* The last line will select each row with an even index number
+* The first line will select the first row of the table, to set its color to yellow
+* The second line will select the last row of the table, to set its color to yellow
+* The last line will select each row with an even index number, and set their color to orange
 
 ### Question 5
 
@@ -74,7 +74,7 @@ $('button:contains(\'C\')').click(function() {//Do the 2 functionalities before
 
 * The addClass method will add a class to selected element
 * The removeClasss method will remove a class to selected element
-* The toggleClass method toggles between adding and removinga class to selected element
+* The toggleClass method toggles between adding and removing a class to selected element
 
 ### Question 8
 
@@ -102,7 +102,8 @@ $('.b').removeClass('asdf');
 ```
 ## Events
 
-The code related to this part is contained in Events.html
+The code related to this part is contained in Events.html.
+** If you try to run the code, nothing will happen because we disbaled all events with *unbid()* method (see question 11). **
 
 ### Question 10
 Our edit function
@@ -131,7 +132,7 @@ Our edit function
 
 Everythings is explained with the comments.
 Some additionals explanations :
-* We have to be careful with the reference *this*, we easily forget we are not in the same context. For example, here, we must store our row selected before we set focus on the input, because after we set focus on our input, "this" will refer to the input, and no our row.
+* We have to be careful with the reference *this*, we easily forget we are not in the same context. For example, here, we must store our row selected before we set focus on the input, because after we set focus on our input, *this* will refer to the input, and no our row.
 * To get value from of the <input> field, we will use val() method
 * To get text from an inner content, we will use text() method
 * To get text with html balises from an inner content, we will use text() method
@@ -193,7 +194,7 @@ $('a').click(function() {
                 return false;
             });
 ```
-The program will first wait the element is hidden, and then it will load the content.  
+The program will first wait the content element is hidden, and then it will load the content.  
 We cannot use the *this* reference, because we select the div content, and then the *this* will refer to the div content, no our url address.
 ### Question 14
 ```
@@ -277,5 +278,5 @@ function get(url) {
 ```
 Everything is explained in the code comments. I don't have additionals explanations here.
 ## Conclusion
-In this exercice, I improved my skills with jQuery, and I understood a lot better the promises (before I used it without really know what is it, like a black box). I didn't met serious problems.  
+In this exercice, I improved my skills with jQuery, and I understood a lot better the promises (before I used it without really know what is it, such as a black box). I didn't met serious problems.  
 I thank my teacher, sir Piernik, for this exercice and new skills acquired.
